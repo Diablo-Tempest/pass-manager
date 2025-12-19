@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
+
+.select-copy{
+    @apply select-none cursor-pointer hover:bg-purple-800 hover:text-white transition
+}
+
+.font-border-white{
+    -webkit-text-stroke: 0.25px #ffffff;
+}
+
+.font-border-black{
+    -webkit-text-stroke: 0.25px #000000;
+}
+
+/* hide scrollbar on Chrome, Safari, Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+/* hide scrollbar on Firefox */
+html{
+    scrollbar-width: none;
+}
+/* hide scrollbar for Edge, IE */
+body{
+    -ms-overflow-style: none;
+}
+
+.body-min-h-calc{
+    min-height: calc(100vh - 5.5rem);
+}
