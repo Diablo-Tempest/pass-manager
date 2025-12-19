@@ -8,7 +8,7 @@ const Manager = () => {
     const [form, setForm] = useState({ siteURL: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([])
     const getPasswords = async() => {
-        let req = await fetch("http://localhost:3000/")
+        let req = await fetch("https://pass-manager-axnr.onrender.com/")
         let passwords = await req.json()
         setPasswordArray(passwords)
         console.log(passwords);
@@ -45,21 +45,21 @@ const Manager = () => {
         // Update section
         if (form.id) {
             setPasswordArray([...passwordArray, { ...form }])
-            await fetch("http://localhost:3000/", { method: 'PUT', body: JSON.stringify({ ...form }), headers: { 'Content-Type': 'application/json' } })
+            await fetch("https://pass-manager-axnr.onrender.com/", { method: 'PUT', body: JSON.stringify({ ...form }), headers: { 'Content-Type': 'application/json' } })
             toast.success('Entry Updated Succesfully!');
             setForm({ siteURL: "", username: "", password: "" })
             return;
         }
 
         setPasswordArray([...passwordArray, {...form, id: uuidv4()}])
-        await fetch("http://localhost:3000/", {method: 'POST', body: JSON.stringify({...form}), headers: { 'Content-Type': 'application/json' } })
+        await fetch("https://pass-manager-axnr.onrender.com/", {method: 'POST', body: JSON.stringify({...form}), headers: { 'Content-Type': 'application/json' } })
         setForm({ siteURL: "", username: "", password: "" })
         toast.success('Entry Saved Succesfully!');
 
     }
     const deleteEntry = async(id) => {
         setPasswordArray(passwordArray.filter(item => item.id !== id))
-        await fetch("http://localhost:3000/", { method: 'DELETE', body: JSON.stringify({ id }), headers: { 'Content-Type': 'application/json' } })
+        await fetch("https://pass-manager-axnr.onrender.com/", { method: 'DELETE', body: JSON.stringify({ id }), headers: { 'Content-Type': 'application/json' } })
         toast.success('Entry Deleted Succesfully!');
         
     }
